@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.product_item.view.*
 
 class ProductAdapter(
     private val products: MutableList<Product>
@@ -21,11 +22,19 @@ class ProductAdapter(
         )
     }
 
+    fun addProduct(product: Product){
+        products.add(product)
+    }
+
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
+        val product = products[position]
+        holder.itemView.apply {
+            textView.text = product.name
+        }
 
     }
 
     override fun getItemCount(): Int {
-
+        return products.size
     }
 }
